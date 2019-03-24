@@ -1,2 +1,2 @@
 # TodoListWithAngularAndFirestore
-ToDo list with angular and firestore
+ToDo list with Angular and Firestore
