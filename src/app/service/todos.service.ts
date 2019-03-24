@@ -28,4 +28,8 @@ export class TodosService {
       .then(res => {}, err => reject(err));
     });
   }
+
+  removeToDo(id) {
+    return this.firestore.collection('Todos').doc(id).delete();
+  }
 }

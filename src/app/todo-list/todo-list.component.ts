@@ -25,4 +25,8 @@ export class TodoListComponent implements OnInit {
   updateToDo(id) {
     this.todosService.updateTodo(id, { status: false });
   }
+
+  removeToDo(id) {
+    this.todosService.removeToDo(id);
+  }
 }

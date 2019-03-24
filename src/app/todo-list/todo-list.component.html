@@ -10,12 +10,15 @@
 <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Todos</h6> 
     <div class="media text-muted pt-3" *ngFor="let todo of todos">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} </strong>
-        {{ todo.payload.doc.data().title }}
+        <p [class]="todo.payload.doc.data().status ? 'media-body pb-3 mb-0 small lh-125 border-bottom border-gray' : 'media-body pb-3 mb-0 small lh-125 border-bottom border-gray todo-done'">
+            <strong class="d-block text-gray-dark">{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} </strong>
+            {{ todo.payload.doc.data().title }}
         </p>
         <div *ngIf="todo.payload.doc.data().status">
-            <button class="btn btn-success btn-sm" (click)="updateToDo(todo.payload.doc.id)">Done</button>
+            <button class="btn btn-success btn-sm m-1" (click)="updateToDo(todo.payload.doc.id)">Done</button>
+        </div>
+        <div *ngIf="!todo.payload.doc.data().status">
+          <button class="btn btn-danger btn-sm m-1" (click)="removeToDo(todo.payload.doc.id)">Remove</button>
         </div>
     </div>
 </div>
